@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜Kovii&#39;s blog
+        window.requestAnimationFrame使用｜Kovii&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://bugduo.com/2018/09/13/hello-world/">
+    <link rel="canonical" href="http://bugduo.com/2018/06/26/window-requestAnimationFrame使用/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -37,7 +37,7 @@
 <style>
 
     header.intro-header {
-        background-image: url('http://o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+        background-image: url('/images/home-bg.jpg')
     }
 </style>
 <!-- hack iOS CSS :active style -->
@@ -79,23 +79,13 @@
                     
                         
 							
-								
-							
-						
-                    
-                        
-							
                         <li>
-                            <a href="/archives/">分类</a>
+                            <a href="/tags/">标签</a>
                         </li>
 							
 						
                     
 					
-					
-						<li>
-							<a href="/about">About</a>
-						</li>
 					
                 </ul>
             </div>
@@ -138,13 +128,13 @@
 
 
 <img class="wechat-title-img"
-     src="">
+     src="/images/post-bg-default.jpg">
 
 
 <style>
     
     header.intro-header {
-        background-image: url('')
+        background-image: url('/images/post-bg-default.jpg')
     }
 
     
@@ -155,15 +145,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>window.requestAnimationFrame使用</h1>
                     
                     <span class="meta">
                          作者 Kovii Ma
                         <span>
-                          日期 2018-09-13
+                          日期 2018-06-26
                          </span>
                     </span>
                     <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
                         
                     </div>
                 </div>
@@ -172,7 +165,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            window.requestAnimationFrame使用
         </span>
     </div>
 </header>
@@ -183,21 +176,45 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="先看MDN文档："><a href="#先看MDN文档：" class="headerlink" title="先看MDN文档："></a>先看MDN文档：</h2><p>window.requestAnimationFrame() 方法告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用。</p>
+<blockquote>
+<p>注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调用 requestAnimationFrame()。</p>
+</blockquote>
+<p>当你需要更新屏幕画面时就可以调用此方法。在浏览器下次重绘前执行回调函数。回调的次数通常是每秒60次，但大多数浏览器通常匹配 W3C 所建议的刷新频率。在大多数浏览器里，当运行在后台标签页或者隐藏的&lt;iframe&gt; 里时，requestAnimationFrame() 会暂停调用以提升性能和电池寿命。</p>
+<p>回调函数会被传入一个参数，DOMHighResTimeStamp，指示当前被 requestAnimationFrame() 排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳。该时间戳是一个十进制数，单位毫秒，最小精度为1ms(1000μs)。   </p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.requestAnimationFrame(callback)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参数</p>
+</blockquote>
+<p>callback<br>一个指定函数的参数，该函数在下次重新绘制动画时调用。这个回调函数<code>只有一个传参</code>，<code>DOMHighResTimeStamp</code>，指示<code>requestAnimationFrame()</code> 开始触发回调函数的当前时间（<code>performance.now()</code> 返回的时间）。</p>
+<blockquote>
+<p>返回值</p>
+</blockquote>
+<p>一个 <code>long</code> 整数，请求 ID ，是回调列表中<code>唯一的标识</code>。是个非零值，没别的意义。你可以传这个值给 <code>window.cancelAnimationFrame()</code> 以取消回调函数。</p>
+<p>比如： 写一个进度条</p>
+<blockquote>
+<p>html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;requestAnimationFrame-test&quot; style=&quot;width: 1px;height: 18px;background: #666;&quot;&gt;0%&lt;/div&gt;</span><br><span class="line">&lt;button onclick=&quot;run()&quot;&gt;Run&lt;/button&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>javascript<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame</span><br><span class="line">var start = 0;</span><br><span class="line">var ele = document.getElementById(&apos;requestAnimationFrame-test&apos;);</span><br><span class="line">var progress = 0</span><br><span class="line"></span><br><span class="line">function step(timestamp) &#123;</span><br><span class="line">    progress += 1;</span><br><span class="line">    ele.style.width = progress+&apos;%&apos;;</span><br><span class="line">    ele.innerHTML = progress+&apos;%&apos;;</span><br><span class="line">    if(progress &lt; 100) &#123;</span><br><span class="line">        requestAnimationFrame(step)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function run() &#123;</span><br><span class="line">    ele.style.width = &quot;1px&quot;;</span><br><span class="line">    progress = 0;</span><br><span class="line">    requestAnimationFrame(step);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>demo: <a href="https://sansanshow.github.io/fe-notes/examples/html/requestAnimationFrame.html" target="_blank" rel="noopener">点击查看</a></p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2018/07/03/实现跨域请求的几种方式/" data-toggle="tooltip" data-placement="top"
+                           title="实现跨域请求的几种方式">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/06/22/PC端JS打开摄像头并拍照/" data-toggle="tooltip" data-placement="top"
+                           title="PC端JS打开摄像头并拍照">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -215,7 +232,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先看MDN文档："><span class="toc-text">先看MDN文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-text">语法</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -230,8 +247,30 @@
 
                 <!-- Featured Tags -->
                 
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
+                        
+                    </div>
+                </section>
+                
 
                 <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="">Jack</a></li>
+                        
+                    </ul>
+                </div>
                 
             </div>
         </div>
@@ -254,18 +293,9 @@
                 <br>
                 <ul class="list-inline text-center">
                 
-                    <li>
-                        <a href="/ssss">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
                 
                     <li>
-                        <a target="_blank" href="https://twitter.com/张三丰">
+                        <a target="_blank" href="https://twitter.com/CoderDevil">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -275,7 +305,7 @@
                 
                 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/KoviiMa">
+                        <a target="_blank" href="https://www.zhihu.com/people/ma_san_37">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -295,15 +325,6 @@
                     </li>
                 
 
-                
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/facebook_username">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
                 
 
                 
@@ -325,7 +346,7 @@
                     <br>
                     <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
                     <br>
-                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                    Created by <a href="https://sansanshow.github.io/">Kovii</a>
                 </p>
 
             </div>
@@ -396,7 +417,7 @@
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--wechat title img-->
-<img class="wechat-title-img" src="/img/one.png">
+<img class="wechat-title-img" src="/images/avatar.jpg">
 </body>
 
 </html>

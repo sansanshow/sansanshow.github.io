@@ -37,7 +37,7 @@
 <style>
 
     header.intro-header {
-        background-image: url('http://o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+        background-image: url('/images/home-bg.jpg')
     }
 </style>
 <!-- hack iOS CSS :active style -->
@@ -79,23 +79,13 @@
                     
                         
 							
-								
-							
-						
-                    
-                        
-							
                         <li>
-                            <a href="/archives/">分类</a>
+                            <a href="/tags/">标签</a>
                         </li>
 							
 						
                     
 					
-					
-						<li>
-							<a href="/about">About</a>
-						</li>
 					
                 </ul>
             </div>
@@ -143,7 +133,7 @@
                 <div class="site-heading text-center">
                     <div class="about-me">
                         <!--移动端头部显示-->
-                        <img src="/img/one.png"/>
+                        <img src="/images/avatar.jpg"/>
                         <h5><a href="/about/">Kovii Ma</a></h5>
                         <p>我就是我，不一样的烟火</p>
                     </div>
@@ -161,11 +151,11 @@
 
 
 
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2018/09/13/hello-world/">
+<div class="post-preview  "
+    style="background-image: url('/images/post-bg-index-default.jpg')">
+    <a href="/2018/09/13/sessionStorage移动端兼容问题/">
         <h2 class="post-title">
-            Hello World
+            sessionStorage移动端兼容问题
         </h2>
         <p class="post-meta">
             <i class="fa fa-calendar" aria-hidden="true"></i> 2018-09-13
@@ -173,7 +163,9 @@
         
         <div class="post-content-preview">
             <p>
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer i..
+                关于sessionStorage的移动端兼容问题最近在开发移动端项目时，需要用到的本地存储的地方不少。都是一些只要记住当前打开窗口的用户数据就行，所以我选择用的sessionStorage。使用场景如下：
+
+A.html页面需要记录一条数据{a:1,b:2};1sessionStorage.se..
             </p>
         </div>
     </a>
@@ -208,7 +200,7 @@
                 <div class="short-about">
                     <!--侧边栏头像-->
                     
-                    <img src="/img/one.png"/>
+                    <img src="/images/avatar.jpg"/>
                     
                     <h5><a href="/about/">Kovii Ma</a></h5>
                     
@@ -218,18 +210,9 @@
                     <!-- SNS Link 社交 -->
                     <ul class="list-inline">
                         
-                        <li>
-                            <a href="/ssss">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
                         
                         <li>
-                            <a target="_blank" href="https://twitter.com/张三丰">
+                            <a target="_blank" href="https://twitter.com/CoderDevil">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -239,7 +222,7 @@
                         
                         
                         <li>
-                            <a target="_blank" href="https://www.zhihu.com/people/KoviiMa">
+                            <a target="_blank" href="https://www.zhihu.com/people/ma_san_37">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -260,15 +243,6 @@
                         
 
                         
-                        <li>
-                            <a target="_blank" href="https://www.facebook.com/facebook_username">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
 
                         
                         <li>
@@ -288,7 +262,29 @@
 
             <!-- Featured Tags  标签 -->
             
+            <section>
+                <div class="tags">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </section>
+            
 
+            
+            <hr>
+            <h5 style="text-align: center;">Friends</h5>
+            <ul class="list-inline" style="text-align: center;">
+                
+                <li><a href="" target="_blank">Jack</a></li>
+                
+            </ul>
             
 
         </div>
@@ -304,18 +300,9 @@
                 <br>
                 <ul class="list-inline text-center">
                 
-                    <li>
-                        <a href="/ssss">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
                 
                     <li>
-                        <a target="_blank" href="https://twitter.com/张三丰">
+                        <a target="_blank" href="https://twitter.com/CoderDevil">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -325,7 +312,7 @@
                 
                 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/KoviiMa">
+                        <a target="_blank" href="https://www.zhihu.com/people/ma_san_37">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -345,15 +332,6 @@
                     </li>
                 
 
-                
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/facebook_username">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
                 
 
                 
@@ -375,7 +353,7 @@
                     <br>
                     <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
                     <br>
-                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                    Created by <a href="https://sansanshow.github.io/">Kovii</a>
                 </p>
 
             </div>
@@ -446,7 +424,7 @@
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--wechat title img-->
-<img class="wechat-title-img" src="/img/one.png">
+<img class="wechat-title-img" src="/images/avatar.jpg">
 </body>
 
 </html>

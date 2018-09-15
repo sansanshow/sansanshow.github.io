@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Kovii&#39;s blog
+        标签｜Kovii&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://bugduo.com/archives/">
+    <link rel="canonical" href="http://bugduo.com/tags/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -123,271 +123,147 @@
 </script>
 
 <!-- Main Content -->
-
+<style>
+    .intro-header .site-heading {
+        margin: 50px;
+    }
+    
+    header.intro-header {
+        background-image: url('/images/post-bg-default.jpg')
+    }
+    
+</style>
 
 <!-- Page Header -->
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
-    <div class="row">
-        <header class="intro-header">
-            <div class="container">
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading text-center">
-                    <div class="about-me">
-                        <!--移动端头部显示-->
-                        <img src="/images/avatar.jpg"/>
-                        <h5><a href="/about/">Kovii Ma</a></h5>
-                        <p>我就是我，不一样的烟火</p>
-                    </div>
+                    <h1>标签</h1>
+                    <span class="subheading">The more you know, the more ignorant</span>
                 </div>
             </div>
-        </header>
+        </div>
     </div>
-</div>
+</header>
+
 <!-- Main Content -->
-<div class="container custom-haojen-container">
-    <!-- Post Container -->
+<div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
-            <!-- Main Content -->
-
-
-
-<div class="post-preview  "
-    style="background-image: url('/images/post-bg-index-default.jpg')">
-    <a href="/2018/09/13/sessionStorage移动端兼容问题/">
-        <h2 class="post-title">
-            sessionStorage移动端兼容问题
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-09-13
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                关于sessionStorage的移动端兼容问题最近在开发移动端项目时，需要用到的本地存储的地方不少。都是一些只要记住当前打开窗口的用户数据就行，所以我选择用的sessionStorage。使用场景如下：
-
-A.html页面需要记录一条数据{a:1,b:2};1sessionStorage.se..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview  "
-    style="background-image: url('/images/post-bg-index-default.jpg')">
-    <a href="/2018/07/03/实现跨域请求的几种方式/">
-        <h2 class="post-title">
-            实现跨域请求的几种方式
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-07-03
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                同源策略
-基本概念
-
-源（origin）就是协议、域名和端口号。http://www.company.com:80协议：http域名：www.company.com端口号：80
-同源策略同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。所以a.com下的..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview  "
-    style="background-image: url('/images/post-bg-index-default.jpg')">
-    <a href="/2018/06/26/window-requestAnimationFrame使用/">
-        <h2 class="post-title">
-            window.requestAnimationFrame使用
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-26
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                先看MDN文档：window.requestAnimationFrame() 方法告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用。
-
-注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview  "
-    style="background-image: url('/images/post-bg-index-default.jpg')">
-    <a href="/2018/06/22/PC端JS打开摄像头并拍照/">
-        <h2 class="post-title">
-            PC端JS打开摄像头并拍照
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-22
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                PC端JS打开摄像头并拍照主要步骤及要点
-打开摄像头主要用到getUserMedia方法，然后将获取到的媒体流置入video标签
-
-截取图片主要用到canvas绘图，使用drawImage方法将video的内容绘至canvas中
-
-将截取的内容上传至服务器，将canvas中的内容转为base64..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview  "
-    style="background-image: url('/images/post-bg-index-default.jpg')">
-    <a href="/2018/05/13/JS控制CSS3，添加浏览器兼容前缀/">
-        <h2 class="post-title">
-            JS控制CSS3，添加浏览器兼容前缀
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-05-13
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                不同的浏览器对于有些css3属性名定义的时候，会加上一些前缀，比如transform,12345678div&#123;    transform: rotate(30deg);    -ms-transform: rotate(30deg);        /* IE 9 */    -web..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-
-<!-- 翻页 pager -->
-
-<ul class="pager">
-    
-    
-</ul>
-
-
-        </div>
-        <!-- Sidebar Container -->
-        <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-
-            <!-- About Me -->
-            <section class="visible-md visible-lg" style="padding: 0 18px">
-                <div class="short-about">
-                    <!--侧边栏头像-->
-                    
-                    <img src="/images/avatar.jpg"/>
-                    
-                    <h5><a href="/about/">Kovii Ma</a></h5>
-                    
-                    <p>我就是我，不一样的烟火</p>
-                    
-                    <hr>
-                    <!-- SNS Link 社交 -->
-                    <ul class="list-inline">
-                        
-                        
-                        <li>
-                            <a target="_blank" href="https://twitter.com/CoderDevil">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-                        
-                        <li>
-                            <a target="_blank" href="https://www.zhihu.com/people/ma_san_37">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-
-                        
-                        <li>
-                            <a target="_blank" href="http://weibo.com/sansanshow">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-
-                        
-
-                        
-                        <li>
-                            <a target="_blank" href="https://github.com/sansanshow">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-
-                        
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Featured Tags  标签 -->
-            
-            <section>
-                <div class="tags">
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                </div>
-            </section>
-            
-
-            
-            <hr>
-            <h5 style="text-align: center;">Friends</h5>
-            <ul class="list-inline" style="text-align: center;">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- 标签云 -->
+            <div id='tag_cloud' class="tags">
                 
-                <li><a href="" target="_blank">Jack</a></li>
+                <a href="#JS" title="JS" rel="4">JS</a>
                 
-            </ul>
+                <a href="#CSS" title="CSS" rel="1">CSS</a>
+                
+                <a href="#CSS3" title="CSS3" rel="1">CSS3</a>
+                
+                <a href="#JSS" title="JSS" rel="1">JSS</a>
+                
+            </div>
+
+            <!-- 标签列表 -->
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="JS">
+                    <span class="tag-text">JS</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2018/05/13/JS控制CSS3，添加浏览器兼容前缀/">
+                        <h2 class="post-title">
+                            JS控制CSS3，添加浏览器兼容前缀
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2018/06/22/PC端JS打开摄像头并拍照/">
+                        <h2 class="post-title">
+                            PC端JS打开摄像头并拍照
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2018/09/13/sessionStorage移动端兼容问题/">
+                        <h2 class="post-title">
+                            sessionStorage移动端兼容问题
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2018/06/26/window-requestAnimationFrame使用/">
+                        <h2 class="post-title">
+                            window.requestAnimationFrame使用
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="CSS">
+                    <span class="tag-text">CSS</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2018/05/13/JS控制CSS3，添加浏览器兼容前缀/">
+                        <h2 class="post-title">
+                            JS控制CSS3，添加浏览器兼容前缀
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="CSS3">
+                    <span class="tag-text">CSS3</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2018/05/13/JS控制CSS3，添加浏览器兼容前缀/">
+                        <h2 class="post-title">
+                            JS控制CSS3，添加浏览器兼容前缀
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="JSS">
+                    <span class="tag-text">JSS</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2018/07/03/实现跨域请求的几种方式/">
+                        <h2 class="post-title">
+                            实现跨域请求的几种方式
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
             
 
         </div>

@@ -37,7 +37,7 @@
 <style>
 
     header.intro-header {
-        background-image: url('http://o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+        background-image: url('/images/home-bg.jpg')
     }
 </style>
 <!-- hack iOS CSS :active style -->
@@ -79,23 +79,13 @@
                     
                         
 							
-								
-							
-						
-                    
-                        
-							
                         <li>
-                            <a href="/archives/">分类</a>
+                            <a href="/tags/">标签</a>
                         </li>
 							
 						
                     
 					
-					
-						<li>
-							<a href="/about">About</a>
-						</li>
 					
                 </ul>
             </div>
@@ -263,7 +253,7 @@
                 <div class="site-heading text-center">
                     <div class="about-me">
                         <!--移动端头部显示-->
-                        <img src="/img/one.png"/>
+                        <img src="/images/avatar.jpg"/>
                         <h5><a href="/about/">Kovii Ma</a></h5>
                         <p>我就是我，不一样的烟火</p>
                     </div>
@@ -281,11 +271,11 @@
 
 
 
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2018/09/13/hello-world/">
+<div class="post-preview  "
+    style="background-image: url('/images/post-bg-index-default.jpg')">
+    <a href="/2018/09/13/sessionStorage移动端兼容问题/">
         <h2 class="post-title">
-            Hello World
+            sessionStorage移动端兼容问题
         </h2>
         <p class="post-meta">
             <i class="fa fa-calendar" aria-hidden="true"></i> 2018-09-13
@@ -293,7 +283,112 @@
         
         <div class="post-content-preview">
             <p>
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer i..
+                关于sessionStorage的移动端兼容问题最近在开发移动端项目时，需要用到的本地存储的地方不少。都是一些只要记住当前打开窗口的用户数据就行，所以我选择用的sessionStorage。使用场景如下：
+
+A.html页面需要记录一条数据{a:1,b:2};1sessionStorage.se..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview  "
+    style="background-image: url('/images/post-bg-index-default.jpg')">
+    <a href="/2018/07/03/实现跨域请求的几种方式/">
+        <h2 class="post-title">
+            实现跨域请求的几种方式
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-07-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                同源策略
+基本概念
+
+源（origin）就是协议、域名和端口号。http://www.company.com:80协议：http域名：www.company.com端口号：80
+同源策略同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。所以a.com下的..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview  "
+    style="background-image: url('/images/post-bg-index-default.jpg')">
+    <a href="/2018/06/26/window-requestAnimationFrame使用/">
+        <h2 class="post-title">
+            window.requestAnimationFrame使用
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-26
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                先看MDN文档：window.requestAnimationFrame() 方法告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用。
+
+注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview  "
+    style="background-image: url('/images/post-bg-index-default.jpg')">
+    <a href="/2018/06/22/PC端JS打开摄像头并拍照/">
+        <h2 class="post-title">
+            PC端JS打开摄像头并拍照
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-22
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                PC端JS打开摄像头并拍照主要步骤及要点
+打开摄像头主要用到getUserMedia方法，然后将获取到的媒体流置入video标签
+
+截取图片主要用到canvas绘图，使用drawImage方法将video的内容绘至canvas中
+
+将截取的内容上传至服务器，将canvas中的内容转为base64..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview  "
+    style="background-image: url('/images/post-bg-index-default.jpg')">
+    <a href="/2018/05/13/JS控制CSS3，添加浏览器兼容前缀/">
+        <h2 class="post-title">
+            JS控制CSS3，添加浏览器兼容前缀
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-05-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                不同的浏览器对于有些css3属性名定义的时候，会加上一些前缀，比如transform,12345678div&#123;    transform: rotate(30deg);    -ms-transform: rotate(30deg);        /* IE 9 */    -web..
             </p>
         </div>
     </a>
@@ -328,7 +423,7 @@
                 <div class="short-about">
                     <!--侧边栏头像-->
                     
-                    <img src="/img/one.png"/>
+                    <img src="/images/avatar.jpg"/>
                     
                     <h5><a href="/about/">Kovii Ma</a></h5>
                     
@@ -338,18 +433,9 @@
                     <!-- SNS Link 社交 -->
                     <ul class="list-inline">
                         
-                        <li>
-                            <a href="/ssss">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
                         
                         <li>
-                            <a target="_blank" href="https://twitter.com/张三丰">
+                            <a target="_blank" href="https://twitter.com/CoderDevil">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -359,7 +445,7 @@
                         
                         
                         <li>
-                            <a target="_blank" href="https://www.zhihu.com/people/KoviiMa">
+                            <a target="_blank" href="https://www.zhihu.com/people/ma_san_37">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -380,15 +466,6 @@
                         
 
                         
-                        <li>
-                            <a target="_blank" href="https://www.facebook.com/facebook_username">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
 
                         
                         <li>
@@ -408,7 +485,29 @@
 
             <!-- Featured Tags  标签 -->
             
+            <section>
+                <div class="tags">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </section>
+            
 
+            
+            <hr>
+            <h5 style="text-align: center;">Friends</h5>
+            <ul class="list-inline" style="text-align: center;">
+                
+                <li><a href="" target="_blank">Jack</a></li>
+                
+            </ul>
             
 
         </div>
@@ -424,18 +523,9 @@
                 <br>
                 <ul class="list-inline text-center">
                 
-                    <li>
-                        <a href="/ssss">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
                 
                     <li>
-                        <a target="_blank" href="https://twitter.com/张三丰">
+                        <a target="_blank" href="https://twitter.com/CoderDevil">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -445,7 +535,7 @@
                 
                 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/KoviiMa">
+                        <a target="_blank" href="https://www.zhihu.com/people/ma_san_37">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -465,15 +555,6 @@
                     </li>
                 
 
-                
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/facebook_username">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
                 
 
                 
@@ -495,7 +576,7 @@
                     <br>
                     <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
                     <br>
-                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                    Created by <a href="https://sansanshow.github.io/">Kovii</a>
                 </p>
 
             </div>
@@ -566,7 +647,7 @@
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--wechat title img-->
-<img class="wechat-title-img" src="/img/one.png">
+<img class="wechat-title-img" src="/images/avatar.jpg">
 </body>
 
 </html>

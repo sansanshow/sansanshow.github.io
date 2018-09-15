@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Kovii" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        实现跨域请求的几种方式｜Kovii&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://bugduo.com/2018/07/03/实现跨域请求的几种方式/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/home-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Kovii
+                </span>
+                's 笔记 | Notes
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">标签</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/images/post-bg-default.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/images/post-bg-default.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>实现跨域请求的几种方式</h1>
+                    
+                    <span class="meta">
+                         作者 Kovii Ma
+                        <span>
+                          日期 2018-07-03
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#JSS"
+                           title="JSS">JSS</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            实现跨域请求的几种方式
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><blockquote>
+<p>基本概念</p>
+</blockquote>
+<h3 id="源（origin）就是协议、域名和端口号。"><a href="#源（origin）就是协议、域名和端口号。" class="headerlink" title="源（origin）就是协议、域名和端口号。"></a>源（origin）就是协议、域名和端口号。</h3><p><a href="http://www.company.com:80" target="_blank" rel="noopener">http://www.company.com:80</a><br>协议：http<br>域名：<a href="http://www.company.com" target="_blank" rel="noopener">www.company.com</a><br>端口号：80</p>
+<h3 id="同源策略-1"><a href="#同源策略-1" class="headerlink" title="同源策略"></a>同源策略</h3><p>同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。所以a.com下的js脚本采用ajax读取b.com里面的文件数据是会报错的。</p>
+<blockquote>
+<p>不受同源策略限制的：</p>
+<ol>
+<li>页面中的链接，重定向以及表单提交是不会受到同源策略限制的。</li>
+<li>跨域资源的引入是可以的。但是js不能读写加载的内容。如嵌入到页面中的<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;，&lt;img&gt;，&lt;link&gt;，&lt;iframe&gt;</code>等。</li>
+</ol>
+</blockquote>
+<h2 id="跨域的实现"><a href="#跨域的实现" class="headerlink" title="跨域的实现"></a>跨域的实现</h2><h3 id="1-图片ping或script标签跨域"><a href="#1-图片ping或script标签跨域" class="headerlink" title="1. 图片ping或script标签跨域"></a>1. 图片ping或script标签跨域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 图片ping</span><br><span class="line">function imgPing(url) &#123;</span><br><span class="line">    var img = new Image();</span><br><span class="line">    img.src = url;</span><br><span class="line">    img.onload = function () &#123;</span><br><span class="line">        console.log(`img-url:$&#123;url&#125;...success`)</span><br><span class="line">    &#125;</span><br><span class="line">    img.onerror = function () &#123;</span><br><span class="line">        console.error(`img-url:$&#123;url&#125;...faild`)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//script标签跨域</span><br></pre></td></tr></table></figure>
+<p>图片ping常用于跟踪用户点击页面或动态广告曝光次数。<br>script标签可以得到从其他来源数据，这也是JSONP依赖的根据。 </p>
+<blockquote>
+<p>缺点：只能发送Get请求 ，无法访问服务器的响应文本（单向请求）</p>
+</blockquote>
+<h3 id="2-JSONP跨域"><a href="#2-JSONP跨域" class="headerlink" title="2. JSONP跨域"></a>2. JSONP跨域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function addScriptTag(src) &#123; </span><br><span class="line">    var script = document.createElement(&apos;script&apos;); </span><br><span class="line">    script.setAttribute(&quot;type&quot;,&quot;text/javascript&quot;); </span><br><span class="line">    script.src = src; </span><br><span class="line">    document.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//window.onload是为了让页面加载完成后再执行</span><br><span class="line">window.onload = function () &#123; </span><br><span class="line">    addScriptTag(&apos;http://b.com/main.js?callback=foo&apos;);</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">function foo(data) &#123; </span><br><span class="line">    console.log(data.name+&quot;欢迎您&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>采用jsonp跨域也存在问题：</p>
+<ol>
+<li>使用这种方法，只要是个网站都可以拿到b.com里的数据，存在安全性问题。<code>需要网站双方商议基础token的身份验证，这里不详述</code>。</li>
+<li>只能是GET，不能POST。</li>
+<li>可能被注入恶意代码，篡改页面内容，可以采用字符串过滤来规避此问题。</li>
+</ol>
+<h3 id="3-CORS"><a href="#3-CORS" class="headerlink" title="3. CORS"></a>3. CORS</h3><p>​ Cross-Origin Resource Sharing（CORS）跨域资源共享是一份浏览器技术的规范，提供了 Web 服务从不同域传来沙盒脚本的方法，以避开浏览器的同源策略，确保安全的跨域数据传输。现代浏览器使用CORS在API容器如XMLHttpRequest来减少HTTP请求的风险来源。与 JSONP 不同，<code>CORS</code>除了<code>GET</code>要求方法以外也支持其他的 HTTP 要求。服务器一般需要增加如下响应头的一种或几种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Access-Control-Allow-Methods: POST, GET, OPTIONS</span><br><span class="line">Access-Control-Allow-Headers: X-PINGOTHER, Content-Type</span><br><span class="line">Access-Control-Max-Age: 86400</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-window-name-iframe"><a href="#4-window-name-iframe" class="headerlink" title="4. window.name+iframe"></a>4. window.name+iframe</h3><p><code>window.name</code>通过在<code>iframe</code>（一般动态创建）中加载跨域HTML文件来起作用。然后，HTML文件将传递给请求者的字符串内容赋值给<code>window.name</code>。然后，请求者可以检索<code>window.name</code>值作为响应。</p>
+<pre><code>- iframe标签的跨域能力；
+- window.name属性值在文档刷新后依旧存在的能力（且最大允许2M左右）。
+</code></pre><p>每个iframe都有包裹它的window，而这个window是top window的子窗口。contentWindow属性返回<iframe>元素的Window对象。你可以使用这个Window对象来访问iframe的文档及其内部DOM。</iframe></p>
+<h3 id="5-window-postMessage"><a href="#5-window-postMessage" class="headerlink" title="5. window.postMessage()"></a>5. window.postMessage()</h3><p>HTML5新特性，可以用来向其他所有的<code>window</code>对象发送消息。需要注意的是我们必须要保证所有的脚本执行完才发送<code>MessageEvent</code>，如果在函数执行的过程中调用了它，就会让后面的函数超时无法执行。</p>
+<h3 id="6-修改document-domain跨子域"><a href="#6-修改document-domain跨子域" class="headerlink" title="6. 修改document.domain跨子域"></a>6. 修改document.domain跨子域</h3><p><strong>前提条件：这两个域名必须属于同一个基础域名!而且所用的协议，端口都要一致，否则无法利用document.domain进行跨域，所以只能跨子域</strong></p>
+<p>​ 在根域范围内，允许把domain属性的值设置为它的上一级域。例如，在<code>”aaa.xxx.com”</code>域内，可以把<code>domain</code>设置为<code>“xxx.com”</code>但不能设置为 <code>“xxx.org”</code>或者<code>”com”</code>。</p>
+<p>​ 现在存在两个域名<code>aaa.xxx.com</code>和<code>bbb.xxx.com</code>。在aaa下嵌入bbb的页面，由于其document.name不一致，无法在aaa下操作bbb的js。可以在aaa和bbb下通过js将<code>document.name = &#39;xxx.com&#39;</code>;设置一致，来达到互相访问的作用。</p>
+<h3 id="7-websocket"><a href="#7-websocket" class="headerlink" title="7. websocket"></a>7. websocket</h3><p>WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信，同时<code>允许跨域通讯</code></p>
+<p><strong>需要注意：</strong>WebSocket对象不支持DOM 2级事件侦听器，必须使用DOM 0级语法分别定义各个事件。</p>
+<h3 id="8-代理"><a href="#8-代理" class="headerlink" title="8. 代理"></a>8. 代理</h3><p>同源策略是针对浏览器端进行的限制，可以通过服务器端来解决该问题</p>
+<p>DomainA客户端（浏览器） ==&gt; DomainA服务器 ==&gt; DomainB服务器 ==&gt; DomainA客户端（浏览器）</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/09/13/sessionStorage移动端兼容问题/" data-toggle="tooltip" data-placement="top"
+                           title="sessionStorage移动端兼容问题">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/06/26/window-requestAnimationFrame使用/" data-toggle="tooltip" data-placement="top"
+                           title="window.requestAnimationFrame使用">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同源策略"><span class="toc-text">同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#源（origin）就是协议、域名和端口号。"><span class="toc-text">源（origin）就是协议、域名和端口号。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同源策略-1"><span class="toc-text">同源策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域的实现"><span class="toc-text">跨域的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-图片ping或script标签跨域"><span class="toc-text">1. 图片ping或script标签跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-JSONP跨域"><span class="toc-text">2. JSONP跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CORS"><span class="toc-text">3. CORS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-window-name-iframe"><span class="toc-text">4. window.name+iframe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-window-postMessage"><span class="toc-text">5. window.postMessage()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-修改document-domain跨子域"><span class="toc-text">6. 修改document.domain跨子域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-websocket"><span class="toc-text">7. websocket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-代理"><span class="toc-text">8. 代理</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#JSS"
+                           title="JSS">JSS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="">Jack</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/CoderDevil">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/ma_san_37">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/sansanshow">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/sansanshow">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Kovii 2018
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Created by <a href="https://sansanshow.github.io/">Kovii</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://bugduo.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/images/avatar.jpg">
+</body>
+
+</html>
